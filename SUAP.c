@@ -6,7 +6,6 @@
 
 int main (){
 
-    setlocale(LC_ALL,"portuguese");
 
     printf("  SSSSSSSSSSSSSSS    UUUUUUU     UUUUUUU               AAA                 PPPPPPPPPPPPPPPPP\n");
     printf(" SS:::::::::::::::S  U:::::U     U:::::U             A:::::A               P::::::::::::::::PP\n");
@@ -30,21 +29,11 @@ int main (){
 
  printf ("\n\nCarregando o sistema: \n\n");
 
-   for (int i = 1; i <= 50; i++){
-      printf ("  %d%%\r", i*2);
-
-      for (char j = 0; j < i; j++){
-         if (!j)
-           printf("  ");
-
-         printf ("%c", 2);
-         Sleep(3);
-      }
-   }
-    printf ("\n\nInicializando sistema...");
-    sleep(2);
-    menu_principal();
-
+ //inicio
+ MENU:
+   printf("\n--------------------\n");
+   printf("MENU PRINCIPAL");  
+   printf("\n--------------------\n");
 
 system("pause");
 return 0;
