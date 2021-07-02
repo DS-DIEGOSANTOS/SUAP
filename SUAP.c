@@ -7,7 +7,7 @@
 
 int main (){
    //administrador
-   int autenticacao_adm;
+   int autenticacao_admin;
    int codigo_admin=0000;//codigo do administrador
 
 
@@ -69,6 +69,36 @@ int main (){
       printf("---------------------");
       printf("\nPAINEL DE AUTENTICACAO ADMINISTRADOR\n");
       printf("----------------------\n\n");
+      printf("\nDigite o codigo do administrador:");
+      scanf("%d", & autenticacao_admin);
+      system("cls");
+
+      if (autenticacao_admin!=codigo_admin){
+         printf("falhar de login.../n");
+         system("pause");
+         break;
+      }
+      if(autenticacao_admin==codigo_admin){
+         do{
+         printf("--------------");
+         printf("\nMENU DO ADMINISTRADOR\n");
+         printf("--------------\n\n");
+         printf("1 - cadastra aluno\n");
+         printf("2 - cadastra professor\n");
+         printf("3 - listar de  aluno\n");
+         printf("4 - lista de professor\n");
+         printf("5 - voltar\n");
+         printf("escolha sua opcao:");
+         scanf("%d",& opcao_adm);
+         system("cls");
+         }while(opcao_adm<1 || opcao_adm>5);
+         switch(opcao_adm){
+            case 1:
+               printf("a");
+               system("pause");
+         }
+      }
+      
       
      break;
     //sair 
