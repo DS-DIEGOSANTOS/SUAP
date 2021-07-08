@@ -441,22 +441,13 @@ int main (){
                         printf("\nIDADE:%d", idade_recebe_aluno[alunos_recebe1]);
                         printf("\ndigite o numero de matricula:");
                         scanf("%d",& matricula_aluno[alunos_recebe1]);        
-                        fprintf(usuario_aluno,"%d\n",matricula_aluno);
+                        fprintf(usuario_aluno,"%d\n",matricula_aluno[alunos_recebe1]);
                         printf("\ndigite a senhar:");
                         scanf("%d",& senha_aluno[alunos_recebe1]);
                         fprintf(usuario_aluno,"%d\n",senha_aluno[alunos_recebe1]);
-                        system("cls");
                         printf("\n\ncriando usuario....");
-                        sleep(5);
-                        printf("\n\nusuario realizado com sucesso");
-                        printf("\ndeseja continua");
-                        printf("\n1 - sim");
-                        printf("\n2 - nao");
-                        printf("\ndigite uma opcao:");
-                        scanf("%d",& opcao_adm);
-                           if(opcao_adm==2){
-                              break;
-                           }             
+                        sleep(5);     
+                        system("cls");                      
                      }
                      if(alunos > Aluno_max){
                         printf("todos os alunos com usuario criado");
@@ -496,14 +487,7 @@ int main (){
                   printf("\n\ncriando usuario....");
                   sleep(5);
                   printf("\n\nusuario realizado com sucesso");
-                  printf("\ndeseja continua");
-                  printf("\n1 - sim");
-                  printf("\n2 - nao");
-                  printf("\ndigite uma opcao:");
-                  scanf("%d",& opcao_adm);
-                  if(opcao_adm==2){
-                     break;
-                     }             
+                  system("cls");     
                   }
                   if(professor_into> professore_max){
                      printf("numero maximo de registro alcancado");
