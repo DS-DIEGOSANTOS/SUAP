@@ -403,14 +403,7 @@ int main (){
                         printf("\n\ncadastrando aluno no sistema....");
                         sleep(5);
                         printf("\n\ncadastro realizado com sucesso");
-                        printf("\ndeseja continua");
-                        printf("\n1 - sim");
-                        printf("\n2 - nao");
-                        printf("\ndigite uma opcao:");
-                        scanf("%d",& opcao_adm);
-                           if(opcao_adm == 2){
-                              break;
-                           }             
+                        system("cls");
                      }
                      if(alunos > Aluno_max){
                         printf("numero  maximo de aluno atingido");
