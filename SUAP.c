@@ -4,7 +4,7 @@
 #include <string.h>
 #include <windows.h>
 #define Aluno_max 1 // define a quantidade de aluno
-#define professore_max 3// define a quantidade de professor
+#define professore_max 1// define a quantidade de professor
 int main (){
    //administrador
    int volta_admin;
@@ -19,6 +19,9 @@ int main (){
 
    //nota
    int notas[professore_max][Aluno_max];
+   int recebe_notas[professore_max][Aluno_max];
+   char notas_materias[professore_max][100];
+
    //alunos cadastro intro
    int alunos=0;
    char nome_aluno[Aluno_max][100],sobrenome_aluno[Aluno_max][100];
@@ -47,8 +50,10 @@ int main (){
    int recebe_codigo_professor[professore_max];
 
    //outros
-   int autenticacao,verificacao,abrir_professor,abrir_aluno,login,visualizacao_aluno,visualizacao_resultado;
-   int opcao,opcao_adm,sair,sair_menu_admin,sair_menu_professor,opcao_professor;
+   int autenticacao,autenticacao_matricula,verificacao,abrir_professor,abrir_aluno,login,visualizacao_aluno,visualizacao_resultado;
+   int opcao,opcao_adm,opcao_aluno,sair,sair_menu_admin,sair_menu_professor,sair_menu_aluno,opcao_professor,abrir_notas,contado=0;
+   int i , j ;
+   
 
    printf("  SSSSSSSSSSSSSSS    UUUUUUU     UUUUUUU               AAA                 PPPPPPPPPPPPPPPPP\n");
    printf(" SS:::::::::::::::S  U:::::U     U:::::U             A:::::A               P::::::::::::::::PP\n");
@@ -73,11 +78,22 @@ int main (){
 
    printf ("\n\nCarregando o sistema: \n\n");
 
-   
-   system("cls");
-   
+    for (i = 1; i <= 50; i++){
+      printf ("  %d%%\r", i*2);
+      fflush (stdout);
+
+      for (j = 0; j < i; j++){
+         if (!j)
+           printf("  ");
+
+         printf ("%c", 2);
+         Sleep(3);
+      }
+   }
+      
    while (sair!=2){
    do{
+      system("cls");
       printf("--------------");
       printf("\nMENU PRINCIPAL\n");
       printf("--------------\n\n");
@@ -190,9 +206,9 @@ int main (){
             for(visualizacao_aluno=0;visualizacao_aluno<Aluno_max;visualizacao_aluno++){
                printf("REGISTRO DE NOTA");
                printf("\n---------------------\n\n");
+               fprintf(notas_alunos,"%s\n",recebe_materia[verificacao]);
                printf("\nMatricula: %d", recebe_matricula_aluno[visualizacao_aluno]);
                printf("\nNome: %s",nome_recebe_aluno[visualizacao_aluno]);
-               fprintf(notas_alunos,"%s\n",recebe_materia[verificacao]);
                printf("\ndigite nota do aluno:");
                scanf("%d",& notas[verificacao][visualizacao_aluno]);
                fprintf(notas_alunos,"%d\n",notas[verificacao][visualizacao_aluno]);
@@ -213,8 +229,7 @@ int main (){
             scanf("%d",& sair_menu_professor);
             break;
             }
-              
-         
+      
          }
       fclose(professor);
       fclose(usuario_aluno);
@@ -224,10 +239,96 @@ int main (){
      break;
     //aluno  
   case 2:
+      cadastro_aluno = fopen("cadastro_aluno.txt","a+");
+      usuario_aluno = fopen("usuario_aluno.txt","a+");
+      notas_alunos = fopen("notas_alunos.txt","a+");
+     
+      do{
+         for(abrir_aluno=0; abrir_aluno<Aluno_max;abrir_aluno++){
+            fscanf(notas_alunos,"%s",notas_materias[contado]);
+            fscanf(notas_alunos,"%d",& recebe_notas[contado][abrir_aluno]);         
+         }        
+         contado=contado+1;
+      }while (contado<professore_max);
+
+
+      for (abrir_aluno = 0; abrir_aluno < Aluno_max; abrir_aluno++){
+         fscanf(cadastro_aluno,"%s",nome_recebe_aluno[abrir_aluno]);
+         fscanf(cadastro_aluno,"%s",sobrenome_recebe_aluno[abrir_aluno]);
+         fscanf(cadastro_aluno,"%d",& idade_recebe_aluno[abrir_aluno]);
+         fscanf(usuario_aluno,"%d",& recebe_matricula_aluno[abrir_aluno]);
+         fscanf(usuario_aluno,"%d",& recebe_senha_aluno[abrir_aluno]);
+      }   
+
+
       printf("---------------------");
       printf("\nPAINEL DE AUTENTICACAO ALUNO\n");
       printf("----------------------\n\n");
+      printf("\ndigite sua matricula:");
+      scanf("%d", & autenticacao_matricula);
+      printf("\ndigite sua senha:");
+      scanf("%d", & autenticacao);
 
+      for (verificacao = 0; verificacao < Aluno_max; verificacao++){
+         if(autenticacao_matricula == recebe_matricula_aluno[verificacao] && autenticacao == recebe_senha_aluno[verificacao]){
+            login = 1;
+            break;
+         }else{
+            login = 0;
+         }
+         
+      }
+       
+      if(login==1){
+         printf("login efeituado com sucesso...");
+         sleep(2);
+        while(sair_menu_aluno!=2){
+         do{
+         system("cls");   
+         printf("MENU ALUNO");
+         printf("\n-------------\n\n");
+         printf("\nseja bem vindo, %s",nome_recebe_aluno[verificacao]);
+         printf("\n1 - Minhas Informacoes");
+         printf("\n2 - Minhas Notas");
+         printf("\n3 - volta");
+         printf("\nescolha uma opcao:");
+         scanf("%d", & opcao_aluno);
+         system("cls");
+         }while(opcao_aluno<1 || opcao_aluno>3);
+
+         switch(opcao_aluno){
+         case 1://minhas informaçoes
+            printf("VISUALIZA INFORMACOES");
+            printf("\n----------------------\n");
+            printf("\nNome: %s %s", nome_recebe_aluno[verificacao],sobrenome_recebe_aluno[verificacao]);
+            printf("\nIdade: %d", idade_recebe_aluno[verificacao]);
+            printf("\nMatricula: %d", recebe_matricula_aluno[verificacao]);
+            printf("\nSenhar: %d", recebe_senha_aluno[verificacao]);
+            system("pause");
+            break;
+         case 2://minhas notas
+            printf("VISUALIZA NOTAS");
+            printf("\n--------------------\n"); 
+            for(abrir_notas = 0;abrir_notas<professore_max;abrir_notas++){
+               printf("%s : %d\n", notas_materias[abrir_notas], recebe_notas[abrir_notas][verificacao]);
+            }
+            system("pause");
+            break;  
+         case 3:
+            printf("REALMENTE DESEJA SAIR");
+            printf("\n---------------------------\n\n");
+            printf("\n1 - Nao");
+            printf("\n2 - Sim");
+            printf("\nescolha uma opcao:");
+            scanf("%d",& sair_menu_aluno);
+            break;   
+         }
+        }
+      }
+
+      fclose(usuario_aluno);
+      fclose(cadastro_aluno);
+      fclose(notas_alunos);
       break;
     //ADMINISTRADOR 
    case 3:
