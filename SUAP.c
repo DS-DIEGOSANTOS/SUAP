@@ -404,12 +404,7 @@ int main (){
                         sleep(5);
                         printf("\n\ncadastro realizado com sucesso");
                         system("cls");
-                     }
-                     if(alunos > Aluno_max){
-                        printf("numero  maximo de aluno atingido");
-                        system("pause");
-                        break;
-                     }
+                     }                    
                      fclose(cadastro_aluno);
                      break; 
                   case 2:// usuario aluno
