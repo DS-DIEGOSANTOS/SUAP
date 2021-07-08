@@ -3,8 +3,8 @@
 #include <stdio.h>
 #include <string.h>
 #include <windows.h>
-#define Aluno_max 1 // define a quantidade de aluno
-#define professore_max 1// define a quantidade de professor
+#define Aluno_max 3 // define a quantidade de aluno
+#define professore_max 2// define a quantidade de professor
 int main (){
    //administrador
    int volta_admin;
@@ -364,6 +364,7 @@ int main (){
                case 1: //sistema aluno
 
                   do{
+                  system("cls");
                   printf("--------------");
                   printf("\nMENU DO SISTEMA ALUNO\n");
                   printf("--------------\n\n");
@@ -406,8 +407,8 @@ int main (){
                         printf("\n1 - sim");
                         printf("\n2 - nao");
                         printf("\ndigite uma opcao:");
-                        scanf("%d",&opcao_adm);
-                           if(opcao_adm==2){
+                        scanf("%d",& opcao_adm);
+                           if(opcao_adm == 2){
                               break;
                            }             
                      }
