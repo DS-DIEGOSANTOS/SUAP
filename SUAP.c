@@ -1,6 +1,6 @@
 // BIBLIOTECA UTILIZADA
 #include <stdio.h>
-#include <stdio.h>
+#include <stdlio.h>
 #include <string.h>
 #include <windows.h>
 #define Aluno_max 3 // define a quantidade de aluno
