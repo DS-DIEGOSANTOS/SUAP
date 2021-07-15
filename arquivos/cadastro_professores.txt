@@ -1,0 +1,8 @@
+Nome: MARIA APARECIDA
+Materia: LOGICA
+Usuario: MARIA
+Senhar: 1
+Nome: DOMINGOS SANTOS
+Materia: INFORMATICA
+Usuario: DOMINGOS
+Senhar: 2
